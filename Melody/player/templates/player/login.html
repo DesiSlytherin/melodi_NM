@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VibeShift - Login</title>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    /* Custom style for a lighter pink theme */
+    .bg-pink-custom { background-color: #fbd3e9; }
+    .border-pink-custom { border-color: #f7a8c4; }
+    .text-pink-custom { color: #f15b92; }
+    .focus\:ring-pink-custom:focus { ring-color: #f7a8c4; }
+    .bg-pink-hover:hover { background-color: #f7a8c4; }
+    .bg-light-pink { background-color: #fcb1d1; } /* Lighter Pink */
+    .hover\:bg-dark-pink:hover { background-color: #d0749f; } /* Darker Pink */
+    .bg-pink-button { background-color: #d0749f; } /* Darker Pink for Button */
+    .hover\:bg-darker-pink:hover { background-color: #aa5277; } /* Even Darker Pink on Hover */
+  </style>
+</head>
+<body class="bg-pink-custom text-gray-800 h-screen min-h-screen flex flex-col">
+  <div class="container mx-auto px-4 py-16 flex flex-col items-center justify-center h-full">
+    <div class="bg-light-pink rounded-lg shadow-lg px-8 py-6 w-full max-w-md">
+      <h1 class="text-4xl font-bold mb-6 text-pink-500">Login</h1>
+      <form action="{% url 'login' %}" method="post" class="flex flex-col space-y-4">
+        {% csrf_token %}
+        <div class="flex flex-col mb-2">
+          <label for="username" class="text-pink-custom text-sm mb-1">Username:</label>
+          <input id="username" name="username" type="text" class="rounded-md bg-transparent border border-pink-custom px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-pink-custom focus:ring-opacity-50 w-full">
+        </div>
+        <div class="flex flex-col mb-2">
+          <label for="password" class="text-pink-custom text-sm mb-1">Password:</label>
+          <input id="password" name="password" type="password" class="rounded-md bg-transparent border border-pink-custom px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-pink-custom focus:ring-opacity-50 w-full">
+        </div>
+        <button type="submit" class="bg-pink-button hover:bg-darker-pink text-gray-800 font-bold py-2 rounded-full px-4 transition-colors duration-200 ease-in-out">Login</button>
+      </form>
+      {% if error_message %}
+        <p class="text-red-600">{{ error_message }}</p>
+      {% endif %}
+    </div>
+    <div class="mt-4 text-pink-custom text-sm">
+      Don't have an account? <a href="{% url 'register' %}" class="underline">Register now</a>.
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Melodi - About Us</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles for pink and modern look */
+        body {
+            background-color: #fde4ec; /* Light pink */
+            font-family: 'Poppins', sans-serif; /* Use Google Font Poppins */
+        }
+
+        nav {
+            background-color: #ff9ff3; /* Pink */
+        }
+
+        main {
+            color: #2d3436; /* Dark grey */
+        }
+
+        footer {
+            background-color: #ff9ff3; /* Pink */
+        }
+
+        /* Pink card styles */
+        .pink-card {
+            background-color: #ffb6c1; /* Slightly darker pink */
+            border-radius: 20px;
+            padding: 20px;
+            /*margin-bottom: 20px;*/
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Pink button styles */
+        .pink-button {
+            background-color: #ff6b81; /* Pink */
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            transition: background-color 0.3s ease;
+        }
+
+        .pink-button:hover {
+            background-color: #ff4757; /* Dark pink */
+        }
+
+        /* Pink link styles */
+        a {
+            color: #ff6b81; /* Pink */
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #ff4757; /* Dark pink */
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="bg-pink-600 shadow-md px-4 py-2 fixed w-full top-0 z-50 flex justify-between items-center">
+        <a href="{% url 'home' %}" class="text-white font-bold text-xl">Melodi</a>
+        {% if user.is_authenticated %}
+        <a href="" class="text-white hover:text-gray-400">{{ user.username }}</a>
+        <a href="{% url 'logout' %}" class="text-white hover:text-gray-400">Logout</a>
+        {% else %}
+        <a href="{% url 'login' %}" class="text-white hover:text-gray-400">Login</a>
+        <a href="{% url 'register' %}" class="text-white hover:text-gray-400">Register</a>
+        {% endif %}
+    </nav>
+
+    <main class="container mx-auto px-4 py-16">
+        <div class="pink-card mb-16">
+            <h1 class="text-4xl font-bold mb-4 text-pink-600">About Melodi</h1>
+            <p class="text-gray-800 text-lg mb-8 leading-relaxed">Melodi serves as your sonic confidant, 
+              harmonizing with the ever-shifting tides of musical expression. 
+              Our devotion to uncovering musical treasures is unwavering, 
+              driven by the belief that each note holds the potential for discovery, 
+              a symphony waiting to be explored.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <div class="pink-card">
+                <h2 class="text-2xl font-bold text-pink-600 mb-4">Our Mission</h2>
+                <p class="text-gray-800 text-base leading-relaxed">
+                  Embarking on a mission to redefine your musical journey, 
+                  Melodi aims to transcend conventional streaming platforms. 
+                  By intertwining bespoke suggestions with live trend insights, 
+                  we harness the potential of data and machine learning. 
+                  This synergy unveils a realm of music tailored to your evolving 
+                  tastes and the dynamic landscape of cultural influences.</p>
+            </div>
+            <div class="pink-card">
+                <h2 class="text-2xl font-bold text-pink-600 mb-4">The Melodi Team</h2>
+                <p class="text-gray-800 text-base leading-relaxed">
+                  At the heart of Melodi lies a diverse ensemble of music aficionados, 
+                  data visionaries, and technological maestros. Bound by our shared passion for music, 
+                  we are driven by the aspiration to craft an immersive auditory journey. 
+                  Continuously pushing boundaries, we meticulously enhance our algorithms, 
+                  ensuring Melodi remains at the forefront of innovation. 
+                  Our aim is to synchronize your listening experience with the ever-evolving currents of musical trends.</p>
+            </div>
+        </div>
+
+        <div class="pink-card">
+            <h2 class="text-2xl font-bold text-pink-600 mb-4">Why Melodi?</h2>
+            <ul class="list-disc space-y-2 text-gray-800 text-base mb-8">
+                <li>Unleash your sonic adventure: Dive beyond the confines of conventional playlists
+                   and unearth an array of vibrant melodies that perfectly complement your mood and style.</li>
+                <li>Pioneer the musical frontier: Embrace the vanguard of music discovery with trend-inspired suggestions, 
+                  guiding you towards emerging talents and dynamic genres that define tomorrow's soundscapes.</li>
+                <li>Your bespoke melody compass: With Melodi as your musical compass, embark on a personalized voyage where 
+                  every note resonates with your individuality. 
+                  Tailored recommendations evolve alongside your musical odyssey, 
+                  ensuring each selection aligns seamlessly with your evolving tastes and preferences.</li>
+            </ul>
+            <a href="{% url 'home' %}" class="pink-button">Start Your Musical Odyssey</a>
+        </div>
+    </main>
+
+    <footer class="bg-pink-600 text-white text-center py-4">
+        <p>&copy; {{ year }} Melodi</p>
+    </footer>
+</body>
+
+</html>
